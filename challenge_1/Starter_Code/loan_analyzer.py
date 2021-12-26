@@ -67,6 +67,9 @@ loan = {
 # @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
 # Print each variable.
 # YOUR CODE HERE!
+
+# here is simply use the get method to extract values from the dictionary on 
+# line 60 which are then assigned to variables making them easier to deal with  
 future_value = loan.get("future_value")
 remaining_months = loan.get("remaining_months")
 print("future value:", future_value)
@@ -85,8 +88,15 @@ fair_value = future_value/(1+(discount_rate/12))**remaining_months
 #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 # YOUR CODE HERE!
+
+# here is use a conditional statement to decipher if the fair value of the loan 
+# is greater or equal to loan price which would indicate that if the Loan price 
+# does meet this criteria it would be worthwhile to purchase the loan bc at the
+# very least the loan is worth of the cost to buy it so you wont lose on the buy
 if fair_value >= loan["loan_price"]:
     print("the loan is worth at least the cost to buy it!")
+# if it doesnt meet the criteria above than off the bat the loan purhcase would 
+# set the buyer at a loss which is the purpose of the 'else' component below. 
 else:
     print("the loan is too expensive and not worth the price")
 """"""""
@@ -113,6 +123,9 @@ new_loan = {
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
+
+# here i set parameters to be then taken and calculated in the present value formula 
+# below, comcluding with the function returning the present value 
 def calculate_present_value(future_value, remaining_months, annual_discount_rate):
     present_value = future_value/(1+(annual_discount_rate/12))**remaining_months
     return present_value
@@ -121,6 +134,9 @@ def calculate_present_value(future_value, remaining_months, annual_discount_rate
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
 # print(f"The present value of the loan is: {present_value}")
+
+# here is set a variable to %20 and then called the function i created just above and set it to a 
+# variable which is printed giving the value of the loan from the individual loan dictionary on line 105 
 annual_discount_rate = 0.2
 present_value = calculate_present_value(new_loan["future_value"], new_loan["remaining_months"], annual_discount_rate)
 print(f"the present value of the loan is: {round(present_value, 2)}")
@@ -200,8 +216,13 @@ output_path = Path("inexpensive_loans.csv")
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
+# here i created the csv file -  menaing i instructed python to 'communicate with it'
 with open(output_path, "w") as csvfile:
+    # here is set the variable csvwriter equal to the tool writer in csv   library and use it to 
+    # write the header into the 'csvfile through the csvwriter in a demilimiter="," stle/format
     csvwriter = csv.writer(csvfile, delimiter=",")
     csvwriter.writerow(header)
+    # i used a for loop to loop through the list of dictionaires which are loan info and 
+    # write all their corresponding value into the csvfile via the same format as above 
     for loan in inexpensive_loans:
         csvwriter.writerow(loan.values())
