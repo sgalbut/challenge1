@@ -125,7 +125,7 @@ new_loan = {
 # YOUR CODE HERE!
 
 # here i set parameters to be then taken and calculated in the present value formula 
-# below, comcluding with the function returning the present value 
+# below, concluding with the function returning the present value 
 def calculate_present_value(future_value, remaining_months, annual_discount_rate):
     present_value = future_value/(1+(annual_discount_rate/12))**remaining_months
     return present_value
@@ -136,7 +136,7 @@ def calculate_present_value(future_value, remaining_months, annual_discount_rate
 # print(f"The present value of the loan is: {present_value}")
 
 # here is set a variable to %20 and then called the function i created just above and set it to a 
-# variable which is printed giving the value of the loan from the individual loan dictionary on line 105 
+# variable which is printed giving the value of the loan from the individual loan dictionary
 annual_discount_rate = 0.2
 present_value = calculate_present_value(new_loan["future_value"], new_loan["remaining_months"], annual_discount_rate)
 print(f"the present value of the loan is: {round(present_value, 2)}")
